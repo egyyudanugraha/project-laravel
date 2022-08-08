@@ -6,6 +6,7 @@ use App\Http\Controllers\KontrakControl;
 use App\Http\Controllers\MahasiswaControl;
 use App\Http\Controllers\MatakuliahControl;
 use App\Http\Controllers\SemesterControl;
+use App\Http\Controllers\UserControl;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,12 +20,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::middleware(['guest'])->group(function(){
+    Route::get('/register', [UserControl::class, 'view_register'])->name('view_regist');
+    Route::post('/register', [UserControl::class, 'register'])->name('regist_post');
+    
+    Route::get('/login', [UserControl::class, 'view_login'])->name('view_login');
+    Route::post('/login', [UserControl::class, 'login'])->name('login_post');
 });
-Route::resource('/mahasiswa', MahasiswaControl::class);
-Route::resource('/matakuliah', MatakuliahControl::class);
-Route::resource('/absen', AbsenControl::class);
-Route::resource('/kontrak', KontrakControl::class);
-Route::resource('/semester', SemesterControl::class);
-Route::resource('/jadwal', JadwalControl::class);
+
+Route::middleware('auth')->group(function(){
+    Route::get('/', function () {
+        return view('index');
+    });
+    Route::resource('/mahasiswa', MahasiswaControl::class);
+    Route::resource('/matakuliah', MatakuliahControl::class);
+    Route::resource('/absen', AbsenControl::class);
+    Route::resource('/kontrak', KontrakControl::class);
+    Route::resource('/semester', SemesterControl::class);
+    Route::resource('/jadwal', JadwalControl::class);
+});

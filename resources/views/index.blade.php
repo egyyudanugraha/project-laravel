@@ -78,7 +78,7 @@
             </header>
             
             <div class="page-heading">
-                <h3>Selamat datang!</h3>
+                <h3>Hallo, {{ auth()->user()->name }}!</h3>
             </div>
             <div class="page-content">
                 <section class="row">
