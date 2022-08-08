@@ -68,6 +68,12 @@
                                     <span>Semester</span>
                                 </a>
                             </li>
+                            <li
+                                class="menu-item">
+                                <a href="/logout" class='menu-link'>
+                                    <span>Keluar</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </nav>

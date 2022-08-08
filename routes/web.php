@@ -38,4 +38,5 @@ Route::middleware('auth')->group(function(){
     Route::resource('/kontrak', KontrakControl::class);
     Route::resource('/semester', SemesterControl::class);
     Route::resource('/jadwal', JadwalControl::class);
+    Route::get('/logout', [UserControl::class, 'logout'])->name('logout');
 });
