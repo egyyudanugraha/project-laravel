@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\AbsenControl;
+use App\Http\Controllers\JadwalControl;
+use App\Http\Controllers\KontrakControl;
+use App\Http\Controllers\MahasiswaControl;
+use App\Http\Controllers\MatakuliahControl;
+use App\Http\Controllers\SemesterControl;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +20,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+Route::resource('/mahasiswa', MahasiswaControl::class);
+Route::resource('/matakuliah', MatakuliahControl::class);
+Route::resource('/absen', AbsenControl::class);
+Route::resource('/kontrak', KontrakControl::class);
+Route::resource('/semester', SemesterControl::class);
+Route::resource('/jadwal', JadwalControl::class);
